@@ -1,0 +1,36 @@
+.slideshows {
+  background-color:#364049;
+  background-image:url(../../content/img/noise.png);
+}
+.slideshow {
+  /* background-color:aqua; */
+}
+.slide {
+  background-color:#999;
+  border-radius:20px;
+  color:#fff;
+  margin:64px 24px 88px 24px;
+  padding:25px;
+  width:926px;
+  height:630px;
+}
+@media only screen and (orientation:portrait){
+   /* portrait styles here */
+}
+#slidescroller {
+  background-color:#333;
+  position:absolute;
+  width:100%;
+  height:150px;
+  bottom:47px;
+  opacity:0.1;
+}
+#rightscroller {
+  background-color:#333;
+  position:absolute;
+  right:0;
+  width:20%;
+  height:120px;
+  bottom:250px;
+  opacity:0.1;
+}

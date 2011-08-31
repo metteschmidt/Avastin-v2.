@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">  
+	<title>Agnitio Modular Platform</title>
+  <link rel="stylesheet" href="all.css" type="text/css" media="screen" charset="utf-8">
+</head>
+<body>
+  <div id="presentation">
+    <nav id="mainmenu"></nav>
+    <section id="slideshows" class="slideshows">    
+    </section>
+    <footer id="mainfooter">
+      <nav id="thumbs"></nav> 
+      <div id="references"></div>
+    </footer>
+  </div>
+  <div id="debug"></div>
+
+  <!-- FRAMEWORK AND LIBRARIES -->  
+  <script src="../viewer/js/monitor.js" type="text/javascript" charset="utf-8"></script>
+  <script src="ag/js/touchy.js" type="text/javascript" charset="utf-8"></script>
+  <script src="ag/js/customevents.js" type="text/javascript" charset="utf-8"></script>
+  <script src="ag/js/Presentation.js" type="text/javascript" charset="utf-8"></script>
+  <script src="ag/js/Slideshow.js" type="text/javascript" charset="utf-8"></script>
+  <script src="ag/js/Collection.js" type="text/javascript" charset="utf-8"></script>
+  <script src="ag/js/Slidescroller.js" type="text/javascript" charset="utf-8"></script>
+  <script src="ag/js/Data.js" type="text/javascript" charset="utf-8"></script>
+  <script src="ag/js/debug.js" type="text/javascript" charset="utf-8"></script>
+  <script src="modules/basic-menu/basicmenu.js" type="text/javascript" charset="utf-8"></script>
+  <script src="modules/basic-collection-menu/basic-collection-menu.js" type="text/javascript" charset="utf-8"></script>
+  <script src="modules/basic-thumbs/basicthumbs.js" type="text/javascript" charset="utf-8"></script>
+  <script src="modules/references/References.js" type="text/javascript" charset="utf-8"></script>
+
+  <!-- INIT OF APP -->  
+  <script type="text/javascript" charset="utf-8">
+
+    debug.logEvents();
+
+    // Create presentation and global namespace
+    var app = new Presentation({
+      type: 'dynamic',
+      orientation: 'landscape',
+      slideshows: {
+        splash: ['intro'],
+        ss1: ['slide1', 'slide2', 'slide6', 'slide4', 'slide5', 'slide3'],
+        ss2: ['slide3', 'slide5', 'slide2'],
+        chpt1: ['slide3', 'slide1'],
+        chpt2: ['slide5', 'slide4'],
+        chpt3: ['slide1', 'slide2', 'slide6']
+      },
+      collections: {
+        sample: ['chpt1', 'chpt2', 'chpt3'],
+        test: ['splash', 'ss2', 'ss1']
+      }
+    });
+
+    // Core modules
+    app.scroller = new Slidescroller();
+    app.data = new Data();
+
+    // Add presentation modules
+    app.menu = new BasicMenu('mainmenu', 'ss1');
+    app.menu2 = new BasicCollectionMenu('mainmenu', 'sample');
+    app.menu3 = new BasicMenu('mainmenu', 'chpt1');
+    app.thumbs = new BasicThumbs('thumbs', 'ss1');
+    /* app.thumbs2 = new BasicThumbs('thumbs', 'chpt1'); */
+    app.refs = new References('references');
+
+    document.ontouchmove = function(e){
+     e.preventDefault();
+    }    
+  </script>
+
+  <!-- CUSTOM APP JAVASCRIPT -->  
+  <script src="code/js/slide2.js" type="text/javascript" charset="utf-8"></script>
+
+  <!-- LOAD CONTENT -->
+  <script type="text/javascript" charset="utf-8">
+    app.load('splash');
+  </script>  
+</body>
+</html>

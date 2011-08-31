@@ -1,0 +1,20 @@
+(function() {
+  window.presentationInit = document.createEvent('UIEvents');
+  window.slideshowLoad = document.createEvent('UIEvents');
+  window.slideshowUnload = document.createEvent('UIEvents');
+  window.collectionLoad = document.createEvent('UIEvents');
+  window.collectionUnload = document.createEvent('UIEvents');
+  window.slideEnter = document.createEvent('UIEvents');
+  window.slideExit = document.createEvent('UIEvents');
+  window.sectionEnter = document.createEvent('UIEvents');
+  window.sectionExit = document.createEvent('UIEvents');
+  presentationInit.initEvent('presentationInit', false, false);
+  slideshowLoad.initEvent('slideshowLoad', true, false);
+  slideshowUnload.initEvent('slideshowUnload', true, false);
+  collectionLoad.initEvent('collectionLoad', true, false);
+  collectionUnload.initEvent('collectionUnload', true, false);
+  slideEnter.initEvent('slideEnter', true, false);
+  slideExit.initEvent('slideExit', true, false);
+  sectionEnter.initEvent('sectionEnter', true, false);
+  sectionExit.initEvent('sectionExit', true, false);
+}).call(this);
