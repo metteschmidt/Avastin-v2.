@@ -1,5 +1,5 @@
 (function() {
-  app.slide.slide1 = {
+  app.slide.IN_start = {
     onLoad: function(id) {
       console.log("Loading slide1");
     },
@@ -13,7 +13,7 @@
       console.log('Exiting slide1.html');
     }
   };
-  app.slide.slide2 = {
+  app.slide.IN_intro = {
     onLoad: function(id) {
       console.log("Loading slide2");
     },
@@ -27,7 +27,7 @@
       console.log('Exiting slide2.html');
     }
   };
-  app.slide.slide3 = {
+  app.slide.fast_track = {
     onLoad: function(id) {
       console.log("Loading slide3");
     },
@@ -41,5 +41,6 @@
       console.log('Exiting slide3.html');
     }
   };
+// */
 })();
   

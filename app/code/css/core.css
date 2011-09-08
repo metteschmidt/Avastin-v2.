@@ -1,3 +1,10 @@
+@font-face { font-family: HelveticaNeueBold; src: url('../../content/fonts/HelveticaNeueBold.otf') format('truetype'); }
+@font-face { font-family: HelveticaNeueMedium; src: url('../../content/fonts/HelveticaNeueMedium.ttf') format('truetype'); }
+@font-face { font-family: Optima; src: url('../../content/fonts/optima.ttf') format('truetype'); }
+@font-face { font-family: OptimaBold; src: url('../../content/fonts/Optima-LT-Dem-Bold.ttf') format('truetype'); }
+@font-face { font-family: HelvCondensed_Regular; src: url('../../content/fonts/HELVCB.ttf') format('truetype'); }
+@font-face { font-family: MyriadPro; src: url('../../content/fonts/MyriadPro-Regular.otf') format('truetype'); }
+
 body {
   font-family: helvetica;
 }

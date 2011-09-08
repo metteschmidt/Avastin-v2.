@@ -5,23 +5,35 @@
       if (this[i] === item) return i;
     }
     return -1;
-  }, __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) {
-    for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; }
-    function ctor() { this.constructor = child; }
-    ctor.prototype = parent.prototype;
-    child.prototype = new ctor;
-    child.__super__ = parent.prototype;
-    return child;
-  };
+  }, 
+  __hasProp = Object.prototype.hasOwnProperty, 
+  __extends = function(child, parent) {
+    for (var key in parent) { 
+      if (__hasProp.call(parent, key)) 
+        child[key] = parent[key]; 
+      }
+    
+      function ctor() { 
+        this.constructor = child; 
+      }
+    
+      ctor.prototype  = parent.prototype;
+      child.prototype = new ctor;
+      child.__super__ = parent.prototype;
+      
+      return child;
+    };
+    
   window.presentationInit = document.createEvent('UIEvents');
-  window.slideshowLoad = document.createEvent('UIEvents');
-  window.slideshowUnload = document.createEvent('UIEvents');
-  window.collectionLoad = document.createEvent('UIEvents');
+  window.slideshowLoad    = document.createEvent('UIEvents');
+  window.slideshowUnload  = document.createEvent('UIEvents');
+  window.collectionLoad   = document.createEvent('UIEvents');
   window.collectionUnload = document.createEvent('UIEvents');
-  window.slideEnter = document.createEvent('UIEvents');
-  window.slideExit = document.createEvent('UIEvents');
-  window.sectionEnter = document.createEvent('UIEvents');
-  window.sectionExit = document.createEvent('UIEvents');
+  window.slideEnter       = document.createEvent('UIEvents');
+  window.slideExit        = document.createEvent('UIEvents');
+  window.sectionEnter     = document.createEvent('UIEvents');
+  window.sectionExit      = document.createEvent('UIEvents');
+  
   presentationInit.initEvent('presentationInit', false, false);
   slideshowLoad.initEvent('slideshowLoad', true, false);
   slideshowUnload.initEvent('slideshowUnload', true, false);
@@ -31,6 +43,7 @@
   slideExit.initEvent('slideExit', true, false);
   sectionEnter.initEvent('sectionEnter', true, false);
   sectionExit.initEvent('sectionExit', true, false);
+  
   window.Presentation = Presentation = (function() {
     function Presentation(config) {
       var collection, slideshow, _i, _j, _len, _len2, _ref, _ref2;
@@ -87,6 +100,9 @@
       if (this.loaded) {
         this.unLoad();
       }
+      
+      console.log(evt);
+      
       if (type === 'slideshow') {
         this.slideshow = this.loaded = this.slideshows[name];
         this.collection = null;

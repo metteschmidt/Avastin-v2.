@@ -1,43 +1,60 @@
 (function() {
   var Presentation;
-  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; }, __indexOf = Array.prototype.indexOf || function(item) {
-    for (var i = 0, l = this.length; i < l; i++) {
-      if (this[i] === item) return i;
-    }
-    return -1;
-  };
+  var __bind    = function(fn, me) { 
+                    return function() { 
+                      return fn.apply(me, arguments); 
+                    }; 
+                  },
+      __indexOf = Array.prototype.indexOf || 
+                  function(item) {
+                    for (var i = 0, l = this.length; i < l; i++) {
+                      if (this[i] === item) return i;
+                    }
+                                                        
+                    return -1;
+                  };
+
+
   window.Presentation = Presentation = (function() {
     function Presentation(config) {
       var collection, slideshow, _i, _j, _len, _len2, _ref, _ref2;
-      window.app = this;
-      this.type = config.type || 'dynamic';
-      this.orientation = config.orientation || 'landscape';
-      this.country = config.country || 'en';
-      this.version = config.version || '0.1';
-      this.slides = config.slideshows || {};
-      this.sections = config.collections || {};
-      this.slideshowIds = Object.keys(this.slides);
+      
+      window.app         = this;
+      this.type          = config.type        || 'dynamic';
+      this.orientation   = config.orientation || 'landscape';
+      this.country       = config.country     || 'en';
+      this.version       = config.version     || '0.1';
+      this.slides        = config.slideshows  || {};
+      this.sections      = config.collections || {};
+      this.slideshowIds  = Object.keys(this.slides);
       this.collectionIds = Object.keys(this.sections);
-      this.loaded = null;
-      this.slideshows = {};
-      this.collections = {};
+      this.loaded        = null;
+      this.slideshows    = {};
+      this.collections   = {};
+      
       if (this.type === 'json') {
         this.getData();
       }
+      
       this.getElements();
       this.getAllSlides();
+
       _ref = this.slideshowIds;
+      
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         slideshow = _ref[_i];
         this.register(slideshow, this.slides[slideshow]);
       }
+
       _ref2 = this.collectionIds;
+      
       for (_j = 0, _len2 = _ref2.length; _j < _len2; _j++) {
         collection = _ref2[_j];
         this.register(collection, this.sections[collection], 'collection');
       }
       document.dispatchEvent(presentationInit);
     }
+    
     Presentation.prototype.add = function(name, content, type) {
       type = type || 'slideshow';
       if (type === 'slideshow') {
@@ -47,6 +64,7 @@
       }
       return this.register(name, content, type);
     };
+    
     Presentation.prototype.register = function(name, content, type) {
       type = type || 'slideshow';
       if (type === 'slideshow') {
@@ -55,29 +73,35 @@
         this.collections[name] = new Collection(name, content);
       }
     };
+    
     Presentation.prototype.load = function(name, type) {
       var evt;
-      evt = slideshowLoad;
-      type = type || 'slideshow';
+          evt  = slideshowLoad;
+          type = type || 'slideshow';
+         
       if (this.loaded) {
         this.unLoad();
       }
+      
       if (type === 'slideshow') {
-        this.slideshow = this.loaded = this.slideshows[name];
+        console.log(name);
+        this.slideshow  = this.loaded = this.slideshows[name];
         this.collection = null;
         this.loaded.onLoad();
       } else {
-        evt = collectionLoad;
+        evt             = collectionLoad;
         this.collection = this.loaded = this.collections[name];
-        this.slideshow = null;
+        this.slideshow  = null;
         this.loaded.onLoad();
         this.setCurrent(this.collection.content[0]);
         this.insertSections(this.collection.content, this.collection.ele);
       }
+      
       this.elements.presentation.setAttribute('class', name);
       this.insert(this.loaded);
       this.getSlides();
       this.loaded.ele.dispatchEvent(evt);
+      
       if (type === 'collection') {
         this.slideshow.ele.dispatchEvent(sectionEnter);
       }

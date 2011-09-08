@@ -1,19 +1,18 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">  
-	<title>Agnitio Modular Platform</title>
-  <link rel="stylesheet" href="all.css" type="text/css" media="screen" charset="utf-8">
+	<meta charset="UTF-8" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0" />  
+	<title>Gilenya Avastin</title>
+  <link rel="stylesheet" type="text/css" href="all.css" media="screen" charset="utf-8" />
 </head>
 <body>
   <div id="presentation">
     <nav id="mainmenu"></nav>
-    <section id="slideshows" class="slideshows">    
-    </section>
+    <section id="slideshows" class="slideshows"></section>
     <footer id="mainfooter">
       <nav id="thumbs"></nav> 
       <div id="references"></div>
@@ -43,36 +42,80 @@
 
     // Create presentation and global namespace
     var app = new Presentation({
-      type: 'dynamic',
+      type:        'dynamic',
       orientation: 'landscape',
       slideshows: {
-        splash: ['intro'],
-        ss1: ['slide1', 'slide2', 'slide6', 'slide4', 'slide5', 'slide3'],
-        ss2: ['slide3', 'slide5', 'slide2'],
-        chpt1: ['slide3', 'slide1'],
-        chpt2: ['slide5', 'slide4'],
-        chpt3: ['slide1', 'slide2', 'slide6']
+        intro:                ['IN_intro', 
+                               'IN_start'],
+                               
+        efficacy:             ['EF_first_line', 
+                               'EF_high_vegf', 
+                               'EF_overall', 
+                               'EF_subanalysis', 
+                               'EF_pfsos_data', 
+                               'EF_qot_syndrom', 
+                               'EF_treatment', 
+                               'EF_duration'],
+                               
+        patient_profiling:    ['PP_intro', 
+                               'PP_el_consistent', 
+                               'PP_el_similar_disease', 
+                               'PP_el_similar_safety', 
+                               'PP_hy_first_line', 
+                               'PP_hy_consistent', 
+                               'PP_hy_low', 
+                               'PP_hy_results', 
+                               'PP_an_first_line',
+                               'PP_an_consistent',
+                               'PP_an_concomitant',
+                               'PP_cns_first_line',
+                               'PP_cns_consistent',
+                               'PP_cns_study',
+                               'PP_ce_consistent_cli',
+                               'PP_ce_consistent_saf',
+                               'PP_ctl_first_line',
+                               'PP_ctl_consistent',
+                               'PP_ctl_no_risk',
+                               'PP_ctl_conclusion'],
+                               
+        safety:               ['SA_favourable', 
+                               'SA_rank_adverse',
+                               'SA_safety_ref',
+                               'SA_first_line',
+                               'SA_similar'],
+                               
+        mode_of_action:       ['MO_moa'],
+        
+        services:             ['SE_clinical',
+                               'SE_online',
+                               'SE_discuss',
+                               'SE_likely_pre',
+                               'SE_shopping_cart'],
+                               
+        references:           ['RE_references'],
+        
+        fast_track:           ['EF_first_line', 
+                               'EF_subanalysis',
+                               'EF_overall',
+                               'SA_favourable',
+                               'SA_safety_ref']
       },
       collections: {
-        sample: ['chpt1', 'chpt2', 'chpt3'],
-        test: ['splash', 'ss2', 'ss1']
+        avastin: ['intro', 'efficacy', 'patient_profiling', 'safety', 'mode_of_action', 'services', 'references', 'fast_track']
       }
     });
 
     // Core modules
     app.scroller = new Slidescroller();
-    app.data = new Data();
+    app.data     = new Data();
 
     // Add presentation modules
-    app.menu = new BasicMenu('mainmenu', 'ss1');
-    app.menu2 = new BasicCollectionMenu('mainmenu', 'sample');
-    app.menu3 = new BasicMenu('mainmenu', 'chpt1');
-    app.thumbs = new BasicThumbs('thumbs', 'ss1');
-    /* app.thumbs2 = new BasicThumbs('thumbs', 'chpt1'); */
-    app.refs = new References('references');
+    app.menu     = new BasicCollectionMenu('mainmenu', 'avastin');
+    app.thumbs   = new BasicThumbs('thumbs', 'intro');
+    app.refs     = new References('references');
 
     document.ontouchmove = function(e){
-     e.preventDefault();
+      e.preventDefault();
     }    
   </script>
 
@@ -81,7 +124,8 @@
 
   <!-- LOAD CONTENT -->
   <script type="text/javascript" charset="utf-8">
-    app.load('splash');
+    app.load('avastin', " collection");
   </script>  
+
 </body>
 </html>

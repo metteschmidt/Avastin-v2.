@@ -9,16 +9,17 @@
 (function() {
 
   window.BasicCollectionMenu = function(id, collection) {
-    this.id = id;
-    this.ele = document.getElementById(id);
+    this.id           = id;
+    this.ele          = document.getElementById(id);
     this.collectionId = collection;
-    this.initialized = false;
+    this.initialized  = false;
     this._init();
   };
 
   BasicCollectionMenu.prototype = {
     _init: function() {
       var self = this;
+      
       document.addEventListener('collectionLoad', function() {
         if (app.collection.id === self.collectionId) {
           if (self.initialized) {
@@ -45,13 +46,21 @@
     },
 
     _build: function() {
-      var self = this,
+      var self   = this,
           markup = '<ul class="basicmenu">';
+     
       this.collection.content.forEach(function(section) {
-        var name = self._createTitle(section);
-        markup += '<li data-section="' + section + '">' + name + '</li>';
+        var name      = self._createTitle(section);
+        var ignore_me = ['Fast_track', 'Intro']; 
+          
+        if (ignore_me.indexOf(name) >= 0) {
+          markup  += '<li data-section="' + section + '"></li>';
+        } else {
+          markup  += '<li data-section="' + section + '">' + name.replace(/_/g, " ") + '</li>';
+        }
       });
-      markup += '</ul>';
+      
+      markup     += '</ul>';
       this.markup = markup;
     },
     
