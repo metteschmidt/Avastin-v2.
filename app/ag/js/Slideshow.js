@@ -58,7 +58,7 @@
       this._setCurrent(nr);
 
       //console.log(this.content[0]); // IN_start
-      console.log(app.slideElements); // IN_start
+      console.log(app.slideElements[0]); // IN_start
       
       slide.dispatchEvent(slideEnter);
       

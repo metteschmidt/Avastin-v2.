@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+
+#IN-intro {
+	margin:     0px;
+	padding:    0px;
+	z-index:    9000;
+	position:   absolute;
+	background: url(../../content/img/backgrounds/splash.jpg) no-repeat;
+}

@@ -36,6 +36,12 @@
       }
       previous.ele.dispatchEvent(sectionExit);
       currentSlide.dispatchEvent(slideExit);
+      
+      console.log(app);
+      console.log(app.slideElements);
+      console.log("First slide in collection: " + collection.content[0]);
+      console.log("Current slide: " + currentSlide + " | Next slide: " + nextSlide + " | Previous slideshow: " + previous);
+      
       app.slide[currentSlide.id].onExit(currentSlide);
       this.ele.style.cssText += '-webkit-transform:translate3d(' + x + 'px, ' + y + 'px, 0px);';
       this._resetSection();

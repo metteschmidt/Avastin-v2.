@@ -203,6 +203,7 @@
     Presentation.prototype.getSlides = function() {
       var slide, slides, _i, _len, _results;
       this.slideElements = {};
+
       slides = this.loaded.ele.querySelectorAll('.slide');
       _results = [];
       for (_i = 0, _len = slides.length; _i < _len; _i++) {
